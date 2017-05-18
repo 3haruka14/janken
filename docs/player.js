@@ -26,6 +26,18 @@ function actionAgainstOmoteUra2(){
   }
   return GU;
 }
+
+function actionAgainstJunban(){
+  const remainder = matches % 3;
+  if(remainder==0){
+    return CHOKI;
+  }
+  else if(remainder==1){
+    return PA;
+  }
+  return GU;
+}
+
 //なんで動かないんだろうね？
 function kirei(a){
   if(a==50){a=0;}
@@ -39,8 +51,9 @@ function action(oppornent){
    result = actionAgainstCHOKI();}
   else if(oppornent=="fighter::odd-even")
    {result = actionAgainstOmoteUra();}
-  else if(oppornent=="fighter::on-third")
+  else {if(oppornent=="fighter::on-third")
   {result = actionAgainstOmoteUra2();}
+  else{result = actionAgainstJunban();}}
   kirei(matches);
 console.log(matches);
 return result;}
